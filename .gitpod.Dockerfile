@@ -9,6 +9,7 @@ USER root
 
 RUN apt-get update \
  && apt-get install -y apache2 mysql-server mysql-client \
+        mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file \
         php${PHP_VERSION} \
         php${PHP_VERSION}-common \
         php${PHP_VERSION}-cli \
@@ -83,3 +84,10 @@ RUN mysqld --daemonize --skip-grant-tables \
     
 USER root
 
+# install MeCab-ipadic-NEologd
+# create Symbolic link '/usr/lib/mecab/dic'
+RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
+ && cd mecab-ipadic-neologd \
+ && bin/install-mecab-ipadic-neologd -n -y \
+ && ln -s /usr/lib/x86_64-linux-gnu/mecab/dic /usr/lib/mecab/dic
+ 
