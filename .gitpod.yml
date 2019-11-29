@@ -16,4 +16,10 @@ tasks:
     multitail /var/log/apache2/access.log -I /var/log/apache2/error.log
 - init: echo 'init script' # runs during prebuild
   command: echo 'start script'
-    
+
+
+vscode:
+  extensions:
+    - onecentlin.laravel5-snippets@1.7.0:JKrBA6LuplbfnBfXDekUJQ==
+    - ryannaddy.laravel-artisan@0.0.26:1jU3t2kiXh/v/6qJ9cMqIQ==
+    - onecentlin.laravel-blade@1.20.0:cRpyKxGh7po7Nes2YsNVLg==
