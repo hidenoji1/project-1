@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/mecab/post', 'MecabController@post')->name('mecab.post');
+
+Route::group(['prefix' => 'mecab'], function () {
+
+    Route::get('/', [
+        'uses' => 'MecabController@index',
+        'as' => 'mecab.index'
+    ]);
+});
