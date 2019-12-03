@@ -12,15 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/mecab/post', 'MecabController@post')->name('mecab.post');
+    $comment = ['てすと','てすと'];
+    return view('test', compact('comment'));
+})->name('top');
 
 Route::group(['prefix' => 'mecab'], function () {
 
     Route::get('/', [
         'uses' => 'MecabController@index',
         'as' => 'mecab.index'
+    ]);
+
+    Route::post('/post', [
+        'uses' => 'MecabController@post',
+        'as' => 'mecab.post'
     ]);
 });
