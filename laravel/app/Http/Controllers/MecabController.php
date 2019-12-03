@@ -21,7 +21,7 @@ class MecabController extends Controller
             'text' => 'required|max:2000',
         ]);
 
-        $words = array();
+        $words = [];
         $text  = $params['text'];
 
         if ($text != '') {
@@ -34,7 +34,7 @@ class MecabController extends Controller
 
             foreach ($words as $index => $word) {
 
-                $words[$index] = array(
+                $words[$index] = [
                     'id'            => $index+1,                        // id
                     'text'          => self::to($word->text),           // 表層形
                     'speech'        => self::to($word->speech),         // 品詞
@@ -46,7 +46,7 @@ class MecabController extends Controller
                     'original'      => self::to($word->original),       // 原形
                     'reading'       => self::to($word->reading),        // 読み
                     'pronunciation' => self::to($word->pronunciation),  // 発音
-                );
+                ];
             }
         }
 
